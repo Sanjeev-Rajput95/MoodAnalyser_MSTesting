@@ -10,11 +10,10 @@ namespace MoodAnalyser_MSTesting
     {
         public string AnalyseMood(string message)
         {
-           // string messeage = "I am in Sad Mood";
-            bool result = message.Contains("Sad");
+            bool result = message.Contains("SAD");
             if (result)
             {
-                return "Sad";
+                return "SAD";
             }
             else
             {
