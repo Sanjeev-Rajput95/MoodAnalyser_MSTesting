@@ -8,9 +8,20 @@ namespace MoodAnalyser_MSTesting
 {
     public class MoodAnayser
     {
-        public string AnalyseMood(string message)
+        public string message;
+        public MoodAnayser()
         {
-            bool result = message.Contains("Sad");
+
+        }
+        public MoodAnayser(string message)
+        {
+            this.message = message;
+        }
+
+        public string AnalyseMood()
+        {
+            bool result = this.message.Contains("Sad");
+            
             if (result)
             {
                 return "SAD";
