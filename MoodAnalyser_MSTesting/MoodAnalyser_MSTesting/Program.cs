@@ -9,9 +9,9 @@
             //Console.WriteLine("Enter string to check Mood ");
             // string mood = Console.ReadLine();
 
-            //MoodAnayser obj = new MoodAnayser("I am in SAD Mood");
-            //string res = obj.AnalyseMood();
-            //Console.WriteLine(res);
+            MoodAnayser obj = new MoodAnayser("I am in SAD Mood");
+            string res = obj.AnalyseMood();
+            Console.WriteLine(res);
         }
 
     }
