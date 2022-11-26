@@ -9,7 +9,7 @@ namespace MoodAnalyser_MSTesting
     public class MoodAnayser
     {
         public string message;
-        public MoodAnayser()
+        static MoodAnayser() //
         {
 
         }
