@@ -20,16 +20,23 @@ namespace MoodAnalyser_MSTesting
 
         public string AnalyseMood()
         {
-            bool result = this.message.Contains("Sad");
-            
-            if (result)
+            try
             {
-                return "SAD";
+                bool result = this.message.Contains("Sad");
+
+                if (result)
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch(NullReferenceException )
             {
-                return "HAPPY";
-            }
+                return "Should Not NULL value";
+            }      
         } 
     }
 }
