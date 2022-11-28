@@ -35,7 +35,7 @@ namespace MoodAnalyser_MSTesting
             }
             catch(NullReferenceException )
             {
-                return "Should Not NULL value";
+                return "HAPPY";
             }      
         } 
     }
