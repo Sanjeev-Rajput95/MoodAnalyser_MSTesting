@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com.sun.xml.@internal.ws.api.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace MoodAnalyser_MSTesting
         {
             try
             {
+                if (message == null)
+                {
+                    throw new CustomException(CustomException.ExceptionType.Null, "It is Null");
+
+                }
                 bool result = this.message.Contains("Sad");
 
                 if (result)
@@ -32,11 +38,28 @@ namespace MoodAnalyser_MSTesting
                 {
                     return "HAPPY";
                 }
+
             }
-            catch(NullReferenceException )
+            catch(CustomException obj )
             {
-                return "HAPPY";
+                   return obj.Message;
             }      
         } 
+    }
+
+    public class CustomException : Exception
+    {
+        ExceptionType type;
+        public enum ExceptionType
+        {
+            Null, empty,
+
+        }
+        public CustomException(ExceptionType type,string message) : base(message)
+        {
+            this.type = type;
+        }
+
+
     }
 }
