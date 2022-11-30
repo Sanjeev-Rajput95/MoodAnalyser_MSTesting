@@ -25,7 +25,7 @@ namespace MoodAnalyser_MSTesting
             {
                 if (message == "")
                 {
-                    throw new CustomException(CustomException.ExceptionType.empty, "It is empty");
+                    throw new CustomException(CustomException.ExceptionType.empty, "It is a empty string");
 
                 }
                 bool result = this.message.Contains("Sad");
