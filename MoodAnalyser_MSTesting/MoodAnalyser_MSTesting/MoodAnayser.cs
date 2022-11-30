@@ -23,9 +23,9 @@ namespace MoodAnalyser_MSTesting
         {
             try
             {
-                if (message == null)
+                if (message == "")
                 {
-                    throw new CustomException(CustomException.ExceptionType.Null, "It is Null");
+                    throw new CustomException(CustomException.ExceptionType.empty, "It is empty");
 
                 }
                 bool result = this.message.Contains("Sad");
