@@ -1,4 +1,5 @@
-﻿using com.sun.xml.@internal.ws.api.model;
+﻿using com.sun.tools.@internal.xjc.api;
+using com.sun.xml.@internal.ws.api.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace MoodAnalyser_MSTesting
     public class MoodAnayser
     {
         public string message;
-        static MoodAnayser() //
+        public MoodAnayser() //
         {
 
         }
@@ -59,7 +60,18 @@ namespace MoodAnalyser_MSTesting
         {
             this.type = type;
         }
+    }
 
-
+    public class MoodAnayserFactory
+    {
+        public MoodAnayserFactory()
+        {
+                
+        }
+        public static object CreateInstance(string ClassName )
+        {
+            Type type = Type.GetType( ClassName );
+            return type;
+        }
     }
 }
