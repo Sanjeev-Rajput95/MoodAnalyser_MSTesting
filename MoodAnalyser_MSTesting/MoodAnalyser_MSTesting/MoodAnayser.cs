@@ -53,7 +53,7 @@ namespace MoodAnalyser_MSTesting
         ExceptionType type;
         public enum ExceptionType
         {
-            Null, empty, InvalideClass,
+            Null, empty, InvalideClass, Invalideconstructor ,
 
         }
         public CustomException(ExceptionType type,string message) : base(message)
@@ -65,7 +65,11 @@ namespace MoodAnalyser_MSTesting
 
     public class MoodAnayserFactory // Reflection 
     {
-        public static object CreateInstance(string ClassName )
+        public MoodAnayserFactory()
+        {
+
+        }
+        public static object CreateInstance(string ClassName , string ConstructorName)
         {
             try
             {
@@ -73,6 +77,12 @@ namespace MoodAnalyser_MSTesting
                 if (type == null)
                 {
                     throw new CustomException(CustomException.ExceptionType.InvalideClass, "No such class");
+                }
+                var constructor = type.GetConstructors();
+                Console.WriteLine("!!!!!!!!!!!" + constructor.ToString());
+                if(constructor.ToString() != ConstructorName)
+                {
+                    throw new CustomException(CustomException.ExceptionType.Invalideconstructor, "wrong constructor");   
                 }
                 return type;
             }

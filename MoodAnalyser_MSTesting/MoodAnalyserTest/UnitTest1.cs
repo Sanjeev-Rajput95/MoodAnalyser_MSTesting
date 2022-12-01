@@ -64,7 +64,8 @@ namespace MoodAnalyserTest
         public void Reflection_GivenClassName_Return_Object()
         {
             MoodAnayser moodAnayser = new MoodAnayser();
-            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayser");
+            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayser","MoodAnayser");
+            Console.WriteLine("*******" + obj);
             Assert.IsInstanceOfType(moodAnayser, (Type)obj);
         }
 
@@ -72,8 +73,16 @@ namespace MoodAnalyserTest
         public void Reflection_GivenInvalideClass_Return_NoSuchClass_Exception()
         {
             //MoodAnayser moodAnayser = new MoodAnayser();
-            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayse");
+            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayse","");
             Assert.AreEqual("No such class", obj);
+        }
+
+        [TestMethod]
+        public void Reflection_GivenInvalideConstructor_Return_WrongConstructor_Exception()
+        {
+            //MoodAnayser moodAnayser = new MoodAnayser();
+            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayser","MoodAnayser");
+            Assert.AreEqual("wrong constructor", obj);
         }
     }
 }
