@@ -92,5 +92,13 @@ namespace MoodAnalyserTest
             var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayser", "MoodAnayser");
             moodAnayser.Equals(obj);
         }
+
+        [TestMethod]
+        public void _ObjectComparisonByEqualMethod_WithReflection()
+        {
+            MoodAnayser moodAnayser = new MoodAnayser("HAPPY");
+            var obj = MoodAnayserFactory.CreateInstance("MoodAnalyser_MSTesting.MoodAnayser", "MoodAnayser");
+            moodAnayser.Equals(obj); // comparison method with equal method
+        }
     }
 }
