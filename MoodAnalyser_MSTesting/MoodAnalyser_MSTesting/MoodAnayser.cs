@@ -3,6 +3,7 @@ using com.sun.xml.@internal.ws.api.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +54,7 @@ namespace MoodAnalyser_MSTesting
         ExceptionType type;
         public enum ExceptionType
         {
-            Null, empty, InvalideClass, Invalideconstructor ,
+            Null, empty, InvalideClass, Invalideconstructor,
 
         }
         public CustomException(ExceptionType type,string message) : base(message)
@@ -69,7 +70,7 @@ namespace MoodAnalyser_MSTesting
         {
 
         }
-        public static object CreateInstance(string ClassName , string ConstructorName)
+        public static object CreateInstance(string ClassName , [Optional]string ConstructorName)
         {
             try
             {
@@ -78,13 +79,16 @@ namespace MoodAnalyser_MSTesting
                 {
                     throw new CustomException(CustomException.ExceptionType.InvalideClass, "No such class");
                 }
-                var constructor = type.GetConstructors();
-                Console.WriteLine("!!!!!!!!!!!" + constructor.ToString());
-                if(constructor.ToString() != ConstructorName)
+
+                var constructor = type.GetConstructor(new[] { typeof(string) });
+                if (constructor.ToString() != ConstructorName)
                 {
                     throw new CustomException(CustomException.ExceptionType.Invalideconstructor, "wrong constructor");   
                 }
-                return type;
+              
+                object instance = constructor.Invoke(new object[] { "HAPPY" });
+                return instance;
+                // return type;
             }
             catch (CustomException obj)
             {
